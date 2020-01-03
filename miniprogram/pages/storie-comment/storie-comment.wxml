@@ -1,0 +1,52 @@
+<!-- miniprogram/pages/storie-comment/storie-comment.wxml -->
+<block>
+  <view class="sidebar">
+    <view class="sidebar__left">
+      <navigator class="sidebar__back" open-type="navigateBack">
+        <image class="sidebar__svg" mode="scaleToFill" src="./back.svg"></image>
+      </navigator>
+      <text class="sidebar__info">{{comments}}条评论</text>
+    </view>
+  </view>
+  <scroll-view style="height:calc(100% - 2.55rem)" scroll-y="true">
+    <view class="comment-head">
+      <span class="comment-head__text">{{longComments.length}}条长评</span>
+    </view>
+    <view class="comments">
+      <view class="comment" wx:for="{{longComments}}" wx:key="{{item.id}}">
+        <image class="comment__avatar" mode="scaleToFill" src="{{item.avatar}}"></image>
+        <view class="comment__main">
+          <view class="comment__bar">
+            <text class="comment__name">{{item.author}}</text>
+            <view class="comment__like">
+              <image class="comment__like-svg" mode="scaleToFill" src="./like.svg"></image>
+              {{item.likes}}
+            </view>
+          </view>
+          <rich-text class="comment__content">{{item.content}}</rich-text>
+          <text class="comment__datetime">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="comment-head">
+      <span class="comment-head__text">{{shortComments.length}}条短评</span>
+      <image class="comment-head__icon" mode="scaleToFill" src="./fold.svg" bindtap="handleFoldClick" style="transform: rotate({{open ? 0 : 180}}deg)"></image>
+    </view>
+    <view class="comments" style="{{!open ? 'display:none' : ''}}">
+      <view class="comment" wx:for="{{shortComments}}" wx:key="{{item.id}}">
+        <image class="comment__avatar" mode="scaleToFill" src="{{item.avatar}}"></image>
+        <view class="comment__main">
+          <view class="comment__bar">
+            <text class="comment__name">{{item.author}}</text>
+            <view class="comment__like">
+              <image class="comment__like-svg" mode="scaleToFill" src="./like.svg"></image>
+              {{item.likes}}
+            </view>
+          </view>
+          <rich-text class="comment__content">{{item.content}}</rich-text>
+          <text class="comment__datetime">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</block>

@@ -1,0 +1,58 @@
+<!-- miniprogram/pages/storie-details/storie-details.wxml -->
+<block>
+  <view class="sidebar">
+    <view class="sidebar__left">
+      <navigator class="sidebar__back" open-type="navigateBack">
+        <image class="sidebar__svg" mode="scaleToFill" src="./back.svg"></image>
+      </navigator>
+    </view>
+    <view class="sidebar__right">
+      <navigator class="sidebar__group" url="/pages/storie-comment/storie-comment?id={{detailsId}}&fromSwiper={{fromSwiper}}&comments={{comments}}">
+        <text class="sidebar__text">{{comments}}</text>
+        <image class="sidebar__svg sidebar__svg--message" mode="scaleToFill" src="./comment.svg"></image>
+      </navigator>
+      <view class="sidebar__group">
+        <text class="sidebar__text">{{popularity}}</text>
+        <image class="sidebar__svg" mode="scaleToFill" src="./like.svg"></image>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{fromSwiper === '0'}}">
+    <swiper class="details-page-slider" autoplay="{{false}}" duration="{{duration}}" current="{{slideIndex}}" bindchange="handleSwiperChange">
+      <swiper-item class="storie-details" wx:if="{{slideIndex===2}}">
+        <loading></loading>
+      </swiper-item>
+      <swiper-item class="storie-details" wx:if="{{slideIndex!==0}}">
+        <loading></loading>
+      </swiper-item>
+      <swiper-item class="storie-details">
+        <scroll-view class="storie-details__list--part" scroll-y="true" scroll-top="{{scrollTop}}">
+          <view class="storie-details__header">
+            <image class="storie-details__img" mode="scaleToFill" src="{{article.image}}"></image>
+            <text class="storie-details__title">{{article.title}}</text>
+            <text class="storie-details__img-source">{{article.image_source}}</text>
+          </view>
+          <view class="storie-details__header-cover"></view>
+          <rich-text class="storie-details__html" nodes="{{article.body}}"></rich-text>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item class="storie-details" wx:if="{{slideIndex!==2}}">
+        <loading></loading>
+      </swiper-item>
+      <swiper-item class="storie-details" wx:if="{{slideIndex===0}}">
+        <loading></loading>
+      </swiper-item>
+    </swiper>
+  </block>
+  <block wx:else>
+    <scroll-view class="storie-details__list--whole" style="flex:1" scroll-y="true">
+      <view class="storie-details__header">
+        <image class="storie-details__img" mode="scaleToFill" src="{{article.image}}"></image>
+        <text class="storie-details__title">{{article.title}}</text>
+        <text class="storie-details__img-source">{{article.image_source}}</text>
+      </view>
+      <view class="storie-details__header-cover"></view>
+      <rich-text class="storie-details__html" nodes="{{article.body}}"></rich-text>
+    </scroll-view>
+  </block>
+</block>

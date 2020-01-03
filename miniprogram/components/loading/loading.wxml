@@ -1,0 +1,11 @@
+<!-- components/loading/loading.wxml -->
+<view class="circle-line">
+  <text></text>
+  <text></text>
+  <text></text>
+  <text></text>
+  <text></text>
+  <text></text>
+  <text></text>
+  <text></text>
+</view>

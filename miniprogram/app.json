@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/stories-list/stories-list",
+    "pages/storie-details/storie-details",
+    "pages/storie-comment/storie-comment"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

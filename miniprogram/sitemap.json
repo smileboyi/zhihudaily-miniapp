@@ -1,0 +1,7 @@
+{
+  "desc": "微信小程序版知乎日报，typescript开发",
+  "rules": [{
+  "action": "allow",
+  "page": "*"
+  }]
+}

@@ -1,0 +1,31 @@
+<!-- miniprogram/pages/stories-list/stories-list.wxml -->
+<scroll-view class="stories-list" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="loadNextPageData">
+  <swiper class="slider" indicator-dots="{{true}}" autoplay="{{false}}" interval="{{3000}}" duration="{{500}}">
+    <block wx:for="{{topStories}}" wx:key="{{item.id}}">
+      <swiper-item class="slider__slide">
+        <navigator class="slider__slide-item" t url="/pages/storie-details/storie-details?fromSwiper=1&id={{item.id}}">
+          <image class="slider__slide-img" mode="scaleToFill" src="{{item.image}}"></image>
+          <text class="slider__slide-text">{{item.title}}</text>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <block wx:for="{{listStories}}" wx:key="{{index}}">
+    <view class="stories-section">
+      <view class="section__head-title">{{item.date}}</view>
+      <view class="section__list">
+        <block wx:for="{{item.data}}" wx:key="{{item.id}}">
+          <navigator class="section__item" url="/pages/storie-details/storie-details?fromSwiper=0&id={{item.id}}">
+            <text class="section__item-text">{{item.title}}</text>
+            <image class="section__item-img" src="{{item.images && item.images[0]}}"></image>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </block>
+  <view class="stories-list__more">
+    <view class="stories-list__more-circle">
+      <view class="stories-list__more-cover"></view>
+    </view>
+  </view>
+</scroll-view>
